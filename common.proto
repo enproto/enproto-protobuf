@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package enproto.common;
+
+// 12-byte AES-GCM IV
+message Nonce {
+    bytes value = 1; // Should be 12 bytes for AES-GCM
+}
+
+// Timestamp in epoch milliseconds
+message Timestamp {
+    uint64 value = 1;
+}
+
+// Protocol version identifier
+message Version {
+    uint32 value = 1;
+}
+
+// Optional string-based client identifier
+message ClientID {
+    string value = 1;
+}

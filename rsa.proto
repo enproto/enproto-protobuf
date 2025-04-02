@@ -1,0 +1,34 @@
+syntax = "proto3";
+package enproto.session;
+
+// --- Client → Server ---
+
+// Metadata for initiating an RSA-based session
+message RSAClientPacket {
+    enproto.common.Version version = 1;                 // Protocol version
+    enproto.common.Timestamp timestamp = 2;             // Epoch milliseconds
+    enproto.common.Nonce nonce = 3;                     // Unique nonce
+    enproto.common.ClientID client_id = 4;              // Optional client identifier
+    bytes client_session_pubkey = 5;                    // Ephemeral public key (e.g., x25519 or RSA)
+}
+
+// RSA-encrypted RSAClientPacket
+message RSAClientEncryptedPacket {
+    bytes encrypted_payload = 1; // Encrypted with server's RSA public key
+}
+
+
+// --- Server → Client ---
+
+// Server handshake response (can be signed or encrypted)
+message RSAServerPacket {
+    enproto.common.Timestamp timestamp = 1;             // Epoch milliseconds
+    enproto.common.Nonce nonce = 2;                     // Echo of client nonce or newly generated
+    string session_id = 3;                              // Unique session identifier
+    bytes signature = 4;                                // Server signature (optional)
+}
+
+// RSA-encrypted RSAServerPacket (optional, for confidentiality)
+message RSAServerEncryptedPacket {
+    bytes encrypted_payload = 1;                        // Encrypted with client's ephemeral public key
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "common/types.proto";
+
+package enproto.session;
+
+// AES-GCM based message communication packet
+message AESGCMPacket {
+    enproto.common.Version version = 1;         // Protocol version
+    enproto.common.Timestamp timestamp = 2;     // Epoch milliseconds
+    enproto.common.Nonce nonce = 3;             // 12-byte IV used for AES-GCM
+    bytes cipher_text = 4;                      // AES-GCM encrypted data
+    bytes auth_tag = 5;                         // 16-byte GCM authentication tag
+}
