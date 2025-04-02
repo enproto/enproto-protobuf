@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package enproto;
+
+// Import core definitions
+import "common/types.proto";
+import "session/rsa.proto";
+import "session/aes.proto";
+
+// Optional: define a wrapper message or service interface here if needed
+// Currently, this is a convenience aggregator for all message types
