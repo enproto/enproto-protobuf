@@ -3,6 +3,7 @@ syntax = "proto3";
 import "common/types.proto";
 
 package enproto.session;
+option go_package = "github.com/enproto/go-enproto/pb/session;session";
 
 // AES-GCM based message communication packet
 message AESGCMPacket {

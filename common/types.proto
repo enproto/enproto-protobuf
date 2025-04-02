@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package enproto.common;
+option go_package = "github.com/enproto/go-enproto/pb/common;common";
 
 // 12-byte AES-GCM IV
 message Nonce {

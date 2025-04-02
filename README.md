@@ -29,21 +29,11 @@ You can use the `.proto` files in this repository to generate language-specific 
 ### Example: Generate Go code
 
 ```bash
-protoc --go_out=. --go_opt=paths=source_relative \
-       --proto_path=proto \
-         proto/session/enproto.proto
+protoc --go_out=pb \
+       --go_opt=paths=source_relative \
+       --proto_path=../enproto-protobuf \
+         enproto.proto
 ```
-
-### Example: Generate Python code
-
-```bash
-python -m grpc_tools.protoc \
-       -I proto \
-       --python_out=. \
-         proto/session/enproto.proto
-```
-
-> ⚠️ Remember to add `proto` to your include path (`-I proto`) when compiling.
 
 ---
 
@@ -60,8 +50,8 @@ python -m grpc_tools.protoc \
 
 ## 🧩 Related Projects
 
-- [enproto-spec](https://github.com/enproto/enproto-spec) — Full specification and design documents
-- [enproto-go](https://github.com/enproto/enproto-go) — Go implementation (in development)
+- [spec](https://github.com/enproto/specs) — Full specification and design documents
+- [go-enproto](https://github.com/enproto/go-enproto) — Go implementation (in development)
 
 ---
 

@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package enproto;
+option go_package = "github.com/enproto/go-enproto/pb;enproto";
 
 // Import core definitions
 import "common/types.proto";
